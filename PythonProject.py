@@ -6,8 +6,14 @@ Created on Thu Jul 21 12:15:24 2022
 """
 
 import pandas as pd
+import numpy as np 
 
-Traint = pd.read_csv('train.csv', index_col='User_ID')
+Train = pd.read_csv('train.csv')
 
-print (Traint.head())
-print (Traint.tail())
+print (Train.head())
+print (Train.tail())
+
+x = Train.describe(include = 'all')
+print (x)
+
+print (Train.info())
