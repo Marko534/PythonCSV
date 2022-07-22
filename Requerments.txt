@@ -1,0 +1,31 @@
+1. Structured Based Data Exploration
+	- Display the FIRST / LAST 5 Observations
+	- Descriptive Statistics
+	- Display the Complete Meta-Data of the dataset 
+
+2. Handling Duplicates
+
+3. Handling Outliers
+	- Detecting Outliers
+	- Outlier Treatment
+
+4. Handling Missing Values
+	- Detecting the Missing Values
+	- Missing Value Treatment
+
+5. Univariate Analysis
+	- For Continuous Variables: what are continuous variaables? 
+		- Distribution of Purchase (hiatigram, box plot)
+	- For Categorical Variables: what are categorical ones? 
+		- Composition of Gender
+		- Distribution of Marital_Status
+		- Composition of City_Category
+		- Composition of City_Category
+		- Distribution of age
+		- Composition of  Stay_In_Current_City_Years
+		- Distribution of Occupation
+		
+6. Bivariate Analysis
+	- Scatter Plot
+	- Correlation Matrix
+	- Comparison between Purchase and Marital_Status, between Purchase and Stay_In_Current_City_Years: Horizontal Bar Chart and any other two variables.
