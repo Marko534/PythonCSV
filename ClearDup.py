@@ -17,14 +17,15 @@ Q1_Purchase = Train['Purchase'].quantile(0.25)
 Q3_Purchase = Train['Purchase'].quantile(0.75)
 
 IQR_Purchase = Q3_Purchase - Q1_Purchase
-print (Q1_Purchase, Q3_Purchase, IQR_Purchase)
-
-print (Train)
 
 OutlierFilter = np.logical_or(Train['Purchase'] < (Q1_Purchase - 1.5 * IQR_Purchase),
                     Train['Purchase'] > (Q3_Purchase + 1.5 * IQR_Purchase))
 Outliers = Train [OutlierFilter]
 Train = Train [~OutlierFilter]
-print(Train)
+
+#Detecting the Missing Values By Drooping them
+Droped = Train.dropna()
+print (Train.isnull().sum())
+print (Droped)
 
 
