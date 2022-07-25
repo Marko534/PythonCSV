@@ -17,7 +17,6 @@
 	- For Continuous Variables: what are continuous variaables? 
 		- Distribution of Purchase (hiatigram, box plot)
 	- For Categorical Variables: what are categorical ones? (Normalna distribucija na podatoci)
-	
 		- Composition of Gender
 		- Distribution of Marital_Status
 		- Composition of City_Category
