@@ -20,7 +20,6 @@
 		- Composition of Gender
 		- Distribution of Marital_Status
 		- Composition of City_Category
-		- Composition of City_Category
 		- Distribution of age
 		- Composition of  Stay_In_Current_City_Years
 		- Distribution of Occupation

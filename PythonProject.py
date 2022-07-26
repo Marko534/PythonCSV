@@ -6,14 +6,14 @@ Created on Thu Jul 21 12:15:24 2022
 """
 
 import pandas as pd
-import numpy as np 
+import numpy as np
 
 Train = pd.read_csv('train.csv')
 
-print (Train.head())
-print (Train.tail())
+print(Train.head())
+print(Train.tail())
 
-x = Train.describe(include = 'all')
-print (x)
+x = Train.describe(include='all')
+print(x)
 
-print (Train.info())
+print(Train.info())

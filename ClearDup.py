@@ -1,18 +1,10 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Jul 22 14:41:00 2022
-
-@author: marko.ilioski
-"""
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 
-#Sreduvanje so duplikati ama nema dplikati
 Train = pd.read_csv('train.csv')
 Train.drop_duplicates(inplace=True)
 
-#Detecting the Missing Values and filling them
 TrainWithoutNull = Train
 Product_Category_1 = TrainWithoutNull['Product_Category_1'].unique()
 
@@ -54,24 +46,84 @@ Outliers = TrainWithoutNull[OutlierFilter]
 TrainWithoutOutliers = TrainWithoutNull[~OutlierFilter]
 
 
-#Histogram
-def histogram ():
+def histogramPrice ():
     Bins = range(0, 21400, 1000)
     plt.hist(TrainWithoutOutliers['Purchase'], bins = Bins, color = '#3495eb')
     plt.xticks(Bins[::3])
-    plt.title("Histogram")
+    plt.title("Histogram for Purchase")
     plt.xlabel('Amount spent')
     plt.ylabel('Number of people')
     plt.show()
 
 def boxPlotGender():
-    print (TrainWithoutOutliers['Gender'].loc[TrainWithoutOutliers['Gender'] == 'M'])
-    plt.boxplot([
-        TrainWithoutOutliers['Purchase'].loc[TrainWithoutOutliers['Gender'] == 'M'],
-        TrainWithoutOutliers['Purchase'].loc[TrainWithoutOutliers['Gender'] == 'F']],
-        labels=(['Male', 'Female']))
+    plt.boxplot( TrainWithoutOutliers['Purchase'].loc[TrainWithoutOutliers['Gender'] == 'M'], positions = [1], labels = ['Men'])
+    plt.boxplot( TrainWithoutOutliers['Purchase'].loc[TrainWithoutOutliers['Gender'] == 'F'], positions = [2], labels= ['Women'])
     plt.xlabel('Sex')
     plt.ylabel('Total Spent')
     plt.show()
     
-boxPlotGender()
+def boxPlotAge():
+    Ages = TrainWithoutOutliers['Age'].unique()
+    Ages.sort()
+    print (Ages)
+    i = 0
+    for AgeGroup in Ages:
+        plt.boxplot(TrainWithoutOutliers['Purchase'].loc[TrainWithoutOutliers['Age'] == AgeGroup], positions = [i], labels = [AgeGroup])
+        i = i + 1
+    plt.xlabel('Age Group')
+    plt.ylabel('Total Spent')
+    plt.show()
+    
+def pieGender():
+    fig1, ax1 = plt.subplots()
+    Sizes = [TrainWithoutOutliers['Gender'].loc[TrainWithoutOutliers['Gender'] == 'M'].count(),
+             TrainWithoutOutliers['Gender'].loc[TrainWithoutOutliers['Gender'] == 'F'].count()]
+    ax1.pie(Sizes, explode = [0, 0.1], labels = ['Male' , 'Female'], autopct='%1.1f%%',  shadow=True)
+    ax1.axis('equal')
+    plt.title('Gender Pie chart')
+    plt.show()
+
+def histogramMaritalStatus():
+    plt.hist(TrainWithoutOutliers['Marital_Status'],bins = [0 , .45,  .55 , 1])
+    plt.xticks([0, 1])
+    plt.title("Histogram for Marital Status")
+    plt.xlabel(' Marital Status')
+    plt.ylabel('Number of people')
+    plt.show()
+
+def pieCityCategory():
+    fig1, ax1 = plt.subplots()
+    Sizes = [TrainWithoutOutliers['City_Category'].loc[TrainWithoutOutliers['City_Category'] == 'A'].count(), 
+             TrainWithoutOutliers['City_Category'].loc[TrainWithoutOutliers['City_Category'] == 'B'].count(),
+             TrainWithoutOutliers['City_Category'].loc[TrainWithoutOutliers['City_Category'] == 'C'].count()]
+    ax1.pie(Sizes, labels = ['A' , 'B', 'C'], autopct='%1.1f%%',  shadow=True)
+    ax1.axis('equal')
+    plt.title('City  category Pie Chart')
+    plt.show()
+
+def scaterPlot():
+    Gender  = []
+    for IsGender in TrainWithoutOutliers['Gender']:
+        if IsGender == 'M':
+            Gender.append(0)
+        elif IsGender == 'F':
+            Gender.append(1)
+    Ages = TrainWithoutOutliers['Age'].unique()
+    Ages.sort()
+    plt.scatter(TrainWithoutOutliers['City_Category'], TrainWithoutOutliers['Age'], c=Gender)
+    plt.show()
+scaterPlot()
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
