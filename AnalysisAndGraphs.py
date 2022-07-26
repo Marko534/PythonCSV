@@ -110,19 +110,15 @@ def scaterPlot():
             Gender.append(1)
     Ages = TrainWithoutOutliers['Age'].unique()
     Ages.sort()
-    plt.scatter(TrainWithoutOutliers['City_Category'], TrainWithoutOutliers['Age'], c=Gender)
+    plt.scatter(TrainWithoutOutliers['Occupation'], TrainWithoutOutliers['Purchase'],  c=Gender)
     plt.show()
-scaterPlot()
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+# def CorrelationMatrix():
+#     corr_matrix = np.corrcoef(TrainWithoutOutliers.corll)
+#     im, _ = heatmap(corr_matrix, vegetables, vegetables, ax=ax4,
+#                     cmap="PuOr", vmin=-1, vmax=1,
+#                     cbarlabel="correlation coeff.")
+
     
     
     
