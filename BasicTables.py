@@ -12,8 +12,23 @@ session = Session(engine)
 Train = pd.read_csv('train.csv')
 Train.drop_duplicates(inplace=True)
 
-for gender in Train['Gender']:
+for gender in Train['Gender'].unique():
     session.add(DB.Gender(Gender = gender))
     
+for age in Train['Age'].unique():
+    session.add(DB.Age(Age = age))
+    
+for occupation in Train['Occupation'].unique():
+    session.add(DB.Occupation(Occupation = int (occupation)))
+    
+for cityCategory in Train['City_Category'].unique():
+    session.add(DB.CityCategory(CityCategory = cityCategory))
+
+for stayInCurrentCityYears in Train['Stay_In_Current_City_Years'].unique():
+    session.add(DB.StayInCurrentCityYears(StayInCurrentCityYears = stayInCurrentCityYears))
+    
+for maritalStatus in Train['Marital_Status'].unique():
+    session.add(DB.MaritalStatus(MaritalStatus = str( maritalStatus)))  
+
 session.commit()
     

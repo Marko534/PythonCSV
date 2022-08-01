@@ -26,22 +26,22 @@ class Age(Base):
     user = relationship("User", back_populates='age')
 
 
-class Ocupation(Base):
-    __tablename__ = "Ocupation"
-    OcupationId = Column(Integer, primary_key=True)
-    Ocupation = Column(Integer)
+class Occupation(Base):
+    __tablename__ = "Occupation"
+    OccupationId = Column(Integer, primary_key=True)
+    Occupation = Column(Integer)
     created_date = Column(DateTime, default=datetime.datetime.utcnow)
 
-    user = relationship("User", back_populates='ocupation')
+    user = relationship("User", back_populates='Occupation')
 
 
-class CityCategori(Base):
-    __tablename__ = "CityCategori"
-    CityCategoriId = Column(Integer, primary_key=True)
-    CityCategori = Column(String)
+class CityCategory(Base):
+    __tablename__ = "CityCategory"
+    CityCategoryId = Column(Integer, primary_key=True)
+    CityCategory = Column(String)
     created_date = Column(DateTime, default=datetime.datetime.utcnow)
 
-    user = relationship("User", back_populates='cityCategori')
+    user = relationship("User", back_populates='cityCategory')
 
 
 class StayInCurrentCityYears(Base):
@@ -68,8 +68,8 @@ class User(Base):
     Id = Column(Integer)
     GenderId = Column(Integer, ForeignKey('Gender.GengerId'))
     AgeId = Column(Integer, ForeignKey('Age.AgeId'))
-    OcupationId = Column(Integer, ForeignKey('Ocupation.OcupationId'))
-    CityCategoriId = Column(Integer, ForeignKey('CityCategori.CityCategoriId'))
+    OccupationId = Column(Integer, ForeignKey('Occupation.OccupationId'))
+    CityCategoryId = Column(Integer, ForeignKey('CityCategory.CityCategoryId'))
     StayInCurrentCityYearsId = Column(Integer, ForeignKey(
         'StayInCurrentCityYears.StayInCurrentCityYearsId'))
     MaritalStatusId = Column(Integer, ForeignKey(
@@ -78,8 +78,8 @@ class User(Base):
 
     gender = relationship('Gender', back_populates='user')
     age = relationship('Age', back_populates='user')
-    ocupation = relationship('Ocupation', back_populates='user')
-    cityCategori = relationship('CityCategori', back_populates='user')
+    Occupation = relationship('Occupation', back_populates='user')
+    cityCategory = relationship('CityCategory', back_populates='user')
     stayInCurrentCityYears = relationship(
         'StayInCurrentCityYears', back_populates='user')
     maritalStatus = relationship('MaritalStatus', back_populates='user')
